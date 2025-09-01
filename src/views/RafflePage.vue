@@ -8,33 +8,33 @@
             <p class="text-[5vh] text-yellow-400 font-bold drop-shadow-custom">
                 {{ pemenangNew.Departement.name }}
             </p>
-            <img :src="currentHadiahInList.img_url" alt="image hadiah" class="w-[34%] h-[20vh] object-cover mt-4" />
+            <img :src="currentHadiahInList.img_url" alt="image hadiah" class="w-[34%] h-[10vh] object-cover mt-4" />
         </div>
     </modal-pemenang>
     <div class="bg-[url('@/assets/BG-1.png')] bg-cover bg-center bg-no-repeat">
         <div class="my-auto py-10">
-            <div id="main-dashboard" class="flex flex-col items-center pt-[5vh] h-screen z-10 relative">
-                <div><img class="bg-white rounded-xl p-[10%] w-[20vw] mx-auto" :src="'/logo-hut-kalbe.png'"
+            <div id="main-dashboard" class="flex flex-col items-center pt-4 h-screen z-10 relative">
+                <div><img class="bg-white rounded-xl p-[5%] w-[10vw] mx-auto" :src="'/logo-hut-kalbe.png'"
                         alt="Logo" /></div>
                 <h2 class="text-[5vh] font-bold text-stroke-black-2 text-white my-[2vh]">Doorprize</h2>
                 <div class="flex justify-center items-center gap-1 mb-8">
                     <div class="flex justify-center items-center text-center text-white">
-                        <p class="text-[8vh] font-bold mb-[5vh] text-stroke-black-2 leading-[1.2]">
+                        <p class="text-[8vh] font-bold mb-2 text-stroke-black-2 leading-[1.2]">
                             {{ currentHadiahInList.nama || 'Tidak ada hadiah' }}
                         </p>
                     </div>
                 </div>
-                <div class="flex gap-[1.5vw] mb-[7.5vh]">
-                    <div class="flex justify-center items-center px-[2.7vw] py-[1vw] bg-black rounded-[1vw] gradient-shadow"
+                <div class="flex gap-[1.5vw] mb-[2.5vh]">
+                    <div class="flex justify-center items-center px-[1vw] py-[0.3vw] bg-black rounded-[1vw] gradient-shadow"
                         v-for="i in pemenang" :class="raffleStatus === 'done rolling' ? 'breathing-animation' : ''"
                         :key="i">
-                        <p class="text-[9vh] font-bold mb-0 mt-1 text-white drop-shadow-custom">
+                        <p class="text-[6vh] font-bold mb-0 mt-1 text-white drop-shadow-custom">
                             <span>{{ i }}</span>
                         </p>
                     </div>
                 </div>
                 <button-custom text="tidak ada hadiah" size="lg" :disabled="true" v-if="hadiahList.length === 0" />
-                <button-custom v-else class="mb-4" @clickButton="getWinner" :text="rollButtonText"
+                <button-custom v-else @clickButton="getWinner" :text="rollButtonText"
                     :disabled="raffleStatus == 'on rolling'" size="lg" />
             </div>
         </div>
@@ -43,8 +43,8 @@
             <img src="/doorprize.png" alt="doorprize" class="w-[30vw] scale-x-[-1]" />
         </div>
         <div class="flex justify-between items-center w-full absolute bottom-0 left-0 z-10" v-if="trumpetStatus">
-            <img src="/trumpet.gif" alt="trumpet" class="w-[20vw]" />
-            <img src="/trumpet.gif" alt="trumpet" class="w-[20vw] scale-x-[-1]" />
+            <img src="/trumpet.gif" alt="trumpet" class="w-[10vw]" />
+            <img src="/trumpet.gif" alt="trumpet" class="w-[10vw] scale-x-[-1]" />
         </div>
     </div>
 </template>
@@ -206,18 +206,18 @@ const confetti_shoot = () => {
     (function frame() {
         if (confettiStopped) return;
         const timeLeft = animationEnd - Date.now();
-        skew = Math.max(0.8, skew - 0.001);
+        skew = Math.max(0.2, skew - 0.1);
 
         confetti({
-            particleCount: 10,
+            particleCount: 3,
             spread: randomInRange(50, 70),
             startVelocity: 50,
             origin: {
                 x: Math.random(),
                 y: (Math.random() * skew) - 0.2
             },
-            gravity: 2,
-            scalar: 6,
+            gravity: 1,
+            scalar: 1,
             drift: randomInRange(-0.4, 0.4),
             colors: confettiColors
         });
@@ -235,5 +235,6 @@ const confetti_shoot = () => {
 };
 onMounted(async () => {
     await getHadiahList();
+    confetti_shoot()
 });
 </script>
