@@ -11,9 +11,9 @@
             <img :src="currentHadiahInList.img_url" alt="image hadiah" class="w-[34%] h-[10vh] object-cover mt-4" />
         </div>
     </modal-pemenang>
-    <div class="bg-[url('@/assets/BG-1.png')] bg-cover bg-center bg-no-repeat">
+    <div class="bg-[url('@/assets/BG-1.png')] bg-cover bg-center bg-no-repeat h-screen">
         <div class="my-auto py-10">
-            <div id="main-dashboard" class="flex flex-col items-center pt-4 h-screen z-10 relative">
+            <div id="main-dashboard" class="flex flex-col items-center pt-4 z-10 relative">
                 <div><img class="bg-white rounded-xl p-[5%] w-[10vw] mx-auto" :src="'/logo-hut-kalbe.png'"
                         alt="Logo" /></div>
                 <h2 class="text-[5vh] font-bold text-stroke-black-2 text-white my-[2vh]">Doorprize</h2>
