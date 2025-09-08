@@ -1,3 +1,6 @@
+## About
+Raffle Draw App build on Vue 3 and Supabase.
+
 ## Installation
 
 ### Prerequisites
