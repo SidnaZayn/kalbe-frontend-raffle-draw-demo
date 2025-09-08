@@ -2,13 +2,13 @@
     <modal-pemenang v-if="raffleStatus === 'done rolling'"  @confirmAction="nextRoll" :title="''" @closeModal="raffleStatus = 'idle'"
         confirm="Lanjutkan">
         <div class="text-center flex flex-col items-center gap-3">
-            <p class="text-[7.5vh] text-yellow-400 font-bold">CONGRATULATIONS</p>
-            <p class="text-[6vh] text-yellow-400 font-bold drop-shadow-custom">{{ pemenangNew.nik }}</p>
-            <p class="text-[6vh] text-yellow-400 font-bold drop-shadow-custom">{{ pemenangNew.nama.toUpperCase() }}</p>
-            <p class="text-[5vh] text-yellow-400 font-bold drop-shadow-custom">
+            <p class="text-4xl text-yellow-400 font-bold">CONGRATULATIONS</p>
+            <p class="text-2xl text-yellow-400 font-bold">{{ pemenangNew.nik }}</p>
+            <p class="text-2xl text-yellow-400 font-bold">{{ pemenangNew.nama.toUpperCase() }}</p>
+            <p class="text-xl text-yellow-400 font-bold">
                 {{ pemenangNew.Departement.name }}
             </p>
-            <img :src="currentHadiahInList.img_url" alt="image hadiah" class="w-[34%] h-[10vh] object-cover mt-4" />
+            <img :src="currentHadiahInList.img_url" alt="image hadiah" class="w-48 object-cover mt-4" />
         </div>
     </modal-pemenang>
     <div class="bg-[url('@/assets/BG-1.png')] bg-cover bg-center bg-no-repeat h-screen">
@@ -235,6 +235,5 @@ const confetti_shoot = () => {
 };
 onMounted(async () => {
     await getHadiahList();
-    confetti_shoot()
 });
 </script>

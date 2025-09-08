@@ -19,7 +19,7 @@
         <img v-if="isExpanded || isHovered || isMobileOpen" class="hidden dark:block" src="/Kalbe_Farma_min.png"
           alt="Logo" width="30" height="40" />
         <img v-else src="/Kalbe_Farma_min.png" alt="Logo" width="32" height="32" />
-        <span>RAFFLE DRAW <br>DASHBOARD</span>
+        <span v-if="isExpanded || isHovered || isMobileOpen">RAFFLE DRAW <br>DASHBOARD</span>
       </router-link>
     </div>
     <div class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
@@ -156,6 +156,7 @@ import {
   FlagIcon
 } from "../../icons";
 import { useSidebar } from "@/composables/useSidebar";
+import BuildingIcon from "@/icons/BuildingIcon.vue";
 
 const route = useRoute();
 
@@ -186,46 +187,12 @@ const menuGroups = [
         path: "/hadiah",
       },
       {
-        icon: CalenderIcon,
+        icon: BuildingIcon,
         name: "Departement",
         path: "/departement",
       },
     ],
   }
-  // {
-  //   title: "Others",
-  //   items: [
-  //     {
-  //       icon: PieChartIcon,
-  //       name: "Charts",
-  //       subItems: [
-  //         { name: "Line Chart", path: "/line-chart", pro: false },
-  //         { name: "Bar Chart", path: "/bar-chart", pro: false },
-  //       ],
-  //     },
-  //     {
-  //       icon: BoxCubeIcon,
-  //       name: "Ui Elements",
-  //       subItems: [
-  //         { name: "Alerts", path: "/alerts", pro: false },
-  //         { name: "Avatars", path: "/avatars", pro: false },
-  //         { name: "Badge", path: "/badge", pro: false },
-  //         { name: "Buttons", path: "/buttons", pro: false },
-  //         { name: "Images", path: "/images", pro: false },
-  //         { name: "Videos", path: "/videos", pro: false },
-  //       ],
-  //     },
-  //     {
-  //       icon: PlugInIcon,
-  //       name: "Authentication",
-  //       subItems: [
-  //         { name: "Signin", path: "/signin", pro: false },
-  //         { name: "Signup", path: "/signup", pro: false },
-  //       ],
-  //     },
-  //     // ... Add other menu items here
-  //   ],
-  // },
 ];
 
 const isActive = (path) => route.path === path;
